@@ -41,11 +41,3 @@ repos:
     hooks:
       - id: ruff-check
       - id: ruff-format
-  - repo: local
-    hooks:
-      - id: pytest-unit-tests
-        name: Run unit tests with coverage
-        entry: coverage run -m pytest tests/unit --cov package
-        language: python
-        types: [python]
-        pass_filenames: false

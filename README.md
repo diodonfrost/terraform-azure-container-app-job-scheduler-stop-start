@@ -73,6 +73,7 @@ No modules.
 | [azurerm_container_app_job.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/container_app_job) | resource |
 | [azurerm_role_assignment.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment) | resource |
 | [azurerm_role_definition.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_definition) | resource |
+| [azurerm_container_app_environment.external](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/container_app_environment) | data source |
 | [azurerm_subscription.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
 
 ## Inputs
@@ -83,6 +84,7 @@ No modules.
 | <a name="input_container_app_job_name"></a> [container\_app\_job\_name](#input\_container\_app\_job\_name) | The name of the Container App Job. | `string` | n/a | yes |
 | <a name="input_container_group_schedule"></a> [container\_group\_schedule](#input\_container\_group\_schedule) | Enable Azure Container group scheduler. | `bool` | `false` | no |
 | <a name="input_docker_image"></a> [docker\_image](#input\_docker\_image) | The Docker image to use for the Container App Job. | `string` | `"ghcr.io/diodonfrost/azure-scheduler-stop-start:0.0.1"` | no |
+| <a name="input_external_container_app_environment"></a> [external\_container\_app\_environment](#input\_external\_container\_app\_environment) | Use an external Container App Environment instead of creating a new one. Provide the name and resource\_group\_name. | <pre>object({<br/>    name                = string<br/>    resource_group_name = string<br/>  })</pre> | `null` | no |
 | <a name="input_job_replica_timeout"></a> [job\_replica\_timeout](#input\_job\_replica\_timeout) | The timeout in seconds for each job replica. | `number` | `3600` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location of the Azure resources | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_id"></a> [log\_analytics\_workspace\_id](#input\_log\_analytics\_workspace\_id) | The Log Analytics Workspace ID for Container App Job logs. | `string` | `null` | no |
@@ -115,6 +117,7 @@ No modules.
 - [mysql_scheduler](./examples/mysql_scheduler) - MySQL Flexible Server scheduler
 - [scale_set_scheduler](./examples/scale_set_scheduler) - Virtual Machine Scale Set scheduler
 - [container_group](./examples/container_group) - Container Group scheduler
+- [external_container_app_environment](./examples/external_container_app_environment) - Using an existing Container App Environment
 
 ## Tests
 

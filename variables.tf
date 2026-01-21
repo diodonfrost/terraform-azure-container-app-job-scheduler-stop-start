@@ -118,6 +118,15 @@ variable "log_analytics_workspace_id" {
   default     = null
 }
 
+variable "external_container_app_environment" {
+  description = "Use an external Container App Environment instead of creating a new one. Provide the name and resource_group_name."
+  type = object({
+    name                = string
+    resource_group_name = string
+  })
+  default = null
+}
+
 variable "tags" {
   description = "The tags to apply to the Azure resources"
   type        = map(string)

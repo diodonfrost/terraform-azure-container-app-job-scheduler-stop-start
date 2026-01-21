@@ -1,6 +1,15 @@
 data "azurerm_subscription" "current" {}
 
+data "azurerm_container_app_environment" "external" {
+  count = var.external_container_app_environment != null ? 1 : 0
+
+  name                = var.external_container_app_environment.name
+  resource_group_name = var.external_container_app_environment.resource_group_name
+}
+
 resource "azurerm_container_app_environment" "this" {
+  count = var.external_container_app_environment == null ? 1 : 0
+
   name                       = var.container_app_job_name
   location                   = var.location
   resource_group_name        = var.resource_group_name
@@ -13,7 +22,7 @@ resource "azurerm_container_app_job" "this" {
   name                         = var.container_app_job_name
   location                     = var.location
   resource_group_name          = var.resource_group_name
-  container_app_environment_id = azurerm_container_app_environment.this.id
+  container_app_environment_id = local.container_app_environment_id
 
   replica_timeout_in_seconds = var.job_replica_timeout
 

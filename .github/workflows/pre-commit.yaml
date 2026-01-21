@@ -18,6 +18,16 @@ jobs:
         with:
           python-version: '3.13'
 
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 'latest'
+
+      - name: Install TFLint
+        uses: terraform-linters/setup-tflint@v6
+        with:
+          tflint_version: v0.58.0
+
       - name: Install pre-commit
         run: pip install pre-commit
 
